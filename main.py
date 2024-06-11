@@ -1,3 +1,10 @@
+import sys
+import os
+import json
+
+# Adiciona o diretório atual ao caminho de busca de módulos
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from riot_api import RiotAPI
 from item_recommender import ItemRecommender
 from database import Database
@@ -12,7 +19,8 @@ def main():
         # Obter todos os itens e armazenar no banco de dados
         items_data = api.get_all_items()
         for item_id, item in items_data['data'].items():
-            db.insert_item(item_id, item['name'], item['description'], item['gold']['total'])
+            item['id'] = int(item_id)
+            db.insert_item(item)
         
         print("Items stored in database successfully.")
         

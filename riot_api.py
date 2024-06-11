@@ -21,7 +21,7 @@ class RiotAPI:
         return self._request(endpoint)
 
     def get_all_items(self):
-        url = f"http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/item.json"
+        url = f"http://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/item.json"
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
