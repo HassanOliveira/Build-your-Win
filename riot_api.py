@@ -19,3 +19,9 @@ class RiotAPI:
     def get_live_game_data(self, summoner_id):
         endpoint = f"/lol/spectator/v4/active-games/by-summoner/{summoner_id}"
         return self._request(endpoint)
+
+    def get_all_items(self):
+        url = f"http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/item.json"
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
