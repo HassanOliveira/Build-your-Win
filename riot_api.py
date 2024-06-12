@@ -25,3 +25,9 @@ class RiotAPI:
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
+
+    def get_all_runes(self):
+        url = f"https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/runesReforged.json"
+        response = requests.get(url, verify=False)
+        response.raise_for_status()
+        return response.json()
